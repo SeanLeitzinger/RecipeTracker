@@ -13,7 +13,7 @@ namespace RecipeTracker.Data
 {
     public class RecipeTrackerDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
-        IHttpContextAccessor httpContextAccessor;
+        private IHttpContextAccessor httpContextAccessor;
 
         public RecipeTrackerDbContext(DbContextOptions<RecipeTrackerDbContext> options, IHttpContextAccessor httpContextAccessor)
             : base(options)
@@ -34,6 +34,8 @@ namespace RecipeTracker.Data
             builder.ApplyConfiguration(new DirectionConfiguration());
             builder.ApplyConfiguration(new IngredientConfiguration());
             builder.ApplyConfiguration(new RecipeConfiguration());
+
+            base.OnModelCreating(builder);
         }
 
         public override int SaveChanges()

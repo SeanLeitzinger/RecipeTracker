@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace RecipeTracker.Api.Request
+namespace RecipeTracker.Api.Requests
 {
     public abstract class Request
     {
